@@ -1,6 +1,6 @@
 function startGame() {
     // Get player's name and welcome them
-    let playerName = prompt("Enter your name:");
+    let playerName = prompt("Enter your name, brave soul:");
     alert("Welcome, " + playerName + ", to the Haunted All Saints HS!");
 
     // First decision: choose a path
@@ -14,7 +14,7 @@ function startGame() {
     } else if (path === "3") {
         graveyard();
     } else {
-        alert("Invalid choice.. The spirits are displeased...");
+        alert("Invalid choice! The spirits are displeased...");
         startGame(); // Restart the game if input is invalid
     }
 }
@@ -24,14 +24,23 @@ function library() {
     let choice = prompt("You see a creepy old book on a dusty table. Do you (1) open it or (2) leave it alone?");
     
     if (choice === "1") {
-        alert("A ghost emerges from the book and scares you to death");
+        // New choice within the library if they open the book
+        let bookChoice = prompt("A ghost emerges from the book! Do you (1) try to talk to it or (2) run away?");
+        
+        if (bookChoice === "1") {
+            alert("The ghost shares a secret way out and you escape unharmed. You survive!");
+        } else if (bookChoice === "2") {
+            alert("You run, but the ghost follows and scares you to death!");
+        } else {
+            alert("The ghost is confused by your hesitation and vanishes.");
+        }
     } else if (choice === "2") {
-        alert("You quietly leave the library and find the exit. You survive");
+        alert("You quietly leave the library and find the exit. You survive!");
     } else {
         alert("The spirits are confused by your choice.");
     }
     
-    startGame();
+    endGame();
 }
 
 function basement() {
@@ -39,42 +48,54 @@ function basement() {
     let choice = prompt("You hear strange noises. Do you (1) investigate or (2) run away?");
     
     if (choice === "1") {
-        alert("You discover a car trunk filled with candy");
+        // New choice within the basement if they investigate
+        let investigateChoice = prompt("You find a mysterious chest. Do you (1) open it or (2) leave it alone?");
+        
+        if (investigateChoice === "1") {
+            alert("You open the chest and find a powerful charm that scares away any spirits!");
+        } else if (investigateChoice === "2") {
+            alert("You leave the chest alone, but the noises grow louder. You run out, just barely escaping!");
+        } else {
+            alert("The spirits are confused by your hesitation.");
+        }
     } else if (choice === "2") {
-        alert("You trip and fall... The ghost catches you");
+        alert("You trip and fall... The ghost catches you!");
     } else {
         alert("The spirits are confused by your choice.");
     }
     
-    startGame();
+    endGame();
 }
 
 function graveyard() {
     // Graveyard scenario
-    let choice = prompt("You enter the graveyard and a zombie appears! Do you (1) fight it with a shovel you found, or (2) run away?");
+    let choice = prompt("You enter the graveyard and a zombie appears! Do you (1) fight it with a shovel or (2) run away?");
     
     if (choice === "1") {
-        alert("You bravely swing the shovel and defeat the zombie! You survive");
+        // New choice if they decide to fight the zombie
+        let fightChoice = prompt("The zombie is still advancing! Do you (1) aim for the head or (2) try to trip it?");
+        
+        if (fightChoice === "1") {
+            alert("You successfully defeat the zombie and survive!");
+        } else if (fightChoice === "2") {
+            alert("The zombie stumbles but grabs you as it falls. You don't make it out...");
+        } else {
+            alert("The zombie seizes your hesitation and attacks!");
+        }
     } else if (choice === "2") {
-        alert("You try to run, but the zombie catches you... You become one of the undead");
+        alert("You try to run, but the zombie catches you... You become one of the undead!");
     } else {
-        alert("The zombie is confused by your hesitation and attacks");
+        alert("The spirits are confused by your hesitation.");
     }
     
-    startGame();
+    endGame();
 }
 
-//  Bonus: Another Path 
-function hiddenHallway() {
-    let choice = prompt("You find a hidden hallway. Do you (1) explore it further or (2) turn back?");
-    
-    if (choice === "1") {
-        alert("You find a secret room filled with ancient treasures... and a friendly ghost!");
-    } else if (choice === "2") {
-        alert("You turn back, only to see that the hallway has disappeared...");
-    } else {
-        alert("The spirits don't understand that choice.");
-    }
-    
-    startGame();
+function endGame() {
+    alert("The End. Thanks for playing! ");
 }
+
+// Start
+startGame();
+
+
